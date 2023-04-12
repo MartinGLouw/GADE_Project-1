@@ -6,6 +6,8 @@ public class PrefabSpawner : MonoBehaviour
 {
     public GameObject player; // reference to player game object
     public GameObject prefab; // prefab to spawn
+    public GameObject prefab2;
+    public GameObject Floor;
     public float spawnDistance = 10f; // distance to spawn prefab in front of player
     public Vector3[] spawnPositions; // array of possible spawn positions
     public float spawnInterval = 4f; // time interval between spawns in seconds
@@ -14,12 +16,14 @@ public class PrefabSpawner : MonoBehaviour
 
     void Update()
     {
+        
         // Update time since last spawn
         timeSinceLastSpawn += Time.deltaTime;
 
         // Check if it's time to spawn a new prefab
         if (timeSinceLastSpawn >= spawnInterval)
         {
+            
             var RandNum = Random.Range(1, 4);
             if (RandNum == 1)
             {
@@ -33,15 +37,43 @@ public class PrefabSpawner : MonoBehaviour
             {
                 PosX = 5;
             }
+            var RandPreFab = Random.Range(1, 3);
+            {
+                if (RandPreFab == 1)
+                {
+                    // Calculate the position to spawn the prefab
+                    Vector3 position = new Vector3(PosX, 0.6f,
+                        player.transform.position.z + spawnDistance);
 
+                    // Spawn the prefab
+                    Instantiate(prefab, position, Quaternion.identity);
+
+                    // Reset time since last spawn
+                    timeSinceLastSpawn = 0f;
+                }
+                else
+                {
+                    // Calculate the position to spawn the prefab
+                    Vector3 position = new Vector3(PosX, 1,
+                        player.transform.position.z + spawnDistance);
+
+                    // Spawn the prefab
+                    Instantiate(prefab2, position, Quaternion.identity);
+
+                    // Reset time since last spawn
+                    timeSinceLastSpawn = 0f;   
+                }
+            }
             // Calculate the position to spawn the prefab
-            Vector3 position = new Vector3(PosX, player.transform.position.y, player.transform.position.z + spawnDistance);
+            Vector3 position2 = new Vector3(0, -1,
+                player.transform.position.z + spawnDistance);
 
             // Spawn the prefab
-            Instantiate(prefab, position, Quaternion.identity);
+            Instantiate(Floor, position2, Quaternion.identity);
 
             // Reset time since last spawn
-            timeSinceLastSpawn = 0f;
+            timeSinceLastSpawn = 0f;   
+            
         }
     }
 }

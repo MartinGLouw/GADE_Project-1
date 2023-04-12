@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float minX = -5f; // minimum x position
     public float maxX = 5f; // maximum x position
     public int Forward = 0;
+    private float timeSincePickup = 0f;
 
     void Update()
     {
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             isJumping = false;
         }
+        
+        
     }
 
     void OnCollisionExit(Collision collision)
@@ -47,4 +51,20 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
+
+   /* private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Flying"))
+        {
+            timeSincePickup = 0f;
+            timeSincePickup += Time.deltaTime;
+            while (timeSincePickup < 5f)
+            {
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), 5, transform.position.z);
+            }
+
+            timeSincePickup = 0f;
+
+        }
+    }*/
 }
