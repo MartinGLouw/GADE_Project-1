@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flying : MonoBehaviour
 {
-    private GameObject Pickup;
+    public GameObject Pickup;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

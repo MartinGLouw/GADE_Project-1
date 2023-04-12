@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2225607860816396515}
   - component: {fileID: 1682926477590285412}
   - component: {fileID: 8548297817747792380}
+  - component: {fileID: -3177646016383038782}
   m_Layer: 0
   m_Name: Flying
   m_TagString: Flying
@@ -97,3 +98,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.84
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3177646016383038782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247333147290966906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fd85d49d8f17046bf66d23778f213d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pickup: {fileID: 3247333147290966906}
