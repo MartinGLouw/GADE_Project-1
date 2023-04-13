@@ -9,7 +9,6 @@ public class Flying : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy (GameObject.FindWithTag("Flying"));
             Pickup = GameObject.FindGameObjectWithTag("Flying");
             Destroy(Pickup);
         }

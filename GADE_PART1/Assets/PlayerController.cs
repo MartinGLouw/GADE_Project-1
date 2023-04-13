@@ -52,19 +52,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   /* private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Flying"))
         {
-            timeSincePickup = 0f;
-            timeSincePickup += Time.deltaTime;
-            while (timeSincePickup < 5f)
+            float timeSincePickup = 0f;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.useGravity = false;
+            while (timeSincePickup < 10f)
             {
-                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), 5, transform.position.z);
+                float targetY = Mathf.Lerp(transform.position.y, 9f, timeSincePickup / 5f);
+                transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
+                timeSincePickup += Time.deltaTime;
+                yield return null;
             }
-
-            timeSincePickup = 0f;
-
+            rb.useGravity = true;
         }
-    }*/
+    }
 }

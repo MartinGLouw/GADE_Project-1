@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class ScoreScript : MonoBehaviour
 {
-    public int score;
-    void OnTriggerEnter(Collider other)
+    public float score;
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Score"))
         {
-            score++;
+            score = score + 0.5f;
             Debug.Log("Score: " + score);
+            
         }
+    
         if (other.gameObject.CompareTag("Double"))
         {
-            score++;
+            score = score + 0.5f;
             Debug.Log("Score: " + score);
         }
     }
