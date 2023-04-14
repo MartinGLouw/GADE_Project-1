@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 4512235660116806634}
   - component: {fileID: 3260196821037644579}
   - component: {fileID: -7210662755277628341}
+  - component: {fileID: -2891515457701058296}
   m_Layer: 0
   m_Name: JumpObst
   m_TagString: Untagged
@@ -157,6 +158,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254578f5a7a80a54580b837a84724ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2891515457701058296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572151838559358085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6617cd29f27104c99c1511deaa8c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: EndScreen
 --- !u!1 &5777674427934903649
 GameObject:
   m_ObjectHideFlags: 0
