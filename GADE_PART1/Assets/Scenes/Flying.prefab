@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1682926477590285412}
   - component: {fileID: 8548297817747792380}
   - component: {fileID: -3177646016383038782}
+  - component: {fileID: 7945232184007484318}
   m_Layer: 0
   m_Name: Flying
   m_TagString: Flying
@@ -111,3 +112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pickup: {fileID: 3247333147290966906}
+--- !u!114 &7945232184007484318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247333147290966906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254578f5a7a80a54580b837a84724ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
