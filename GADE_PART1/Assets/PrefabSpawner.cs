@@ -47,8 +47,7 @@ public class PrefabSpawner : MonoBehaviour
                 if (RandPreFab == 1)
                 {
                     // Calculate the position to spawn the prefab
-                    Vector3 position = new Vector3(PosX, 0.6f,
-                        player.transform.position.z + spawnDistance);
+                    Vector3 position = new Vector3(PosX, 0.6f, player.transform.position.z + spawnDistance);
 
                     // Spawn the prefab
                     Instantiate(prefab, position, Quaternion.identity);
@@ -102,6 +101,7 @@ public class PrefabSpawner : MonoBehaviour
 
                 // Reset time since last spawn
                 timeSinceLastSpawnPickup = 0f; 
+                
             }
         }
     }
