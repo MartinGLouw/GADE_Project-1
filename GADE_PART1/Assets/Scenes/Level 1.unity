@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 172273474}
   - component: {fileID: 172273475}
-  - component: {fileID: 172273476}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -168,20 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ba7b7eea8142a4287821559ebd7c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &172273476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172273473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e867e42fd44471e4baccfae2d56cf114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  scoreText: {fileID: 396023148}
 --- !u!1 &396023148
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +531,10 @@ PrefabInstance:
       propertyPath: forwardMoveSpeed
       value: 2.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8157278676381704198, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 396023149}
     - target: {fileID: 8157278676381704199, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: Floor
       value: 
