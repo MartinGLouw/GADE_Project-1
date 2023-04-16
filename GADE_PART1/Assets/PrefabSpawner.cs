@@ -7,6 +7,7 @@ public class PrefabSpawner : MonoBehaviour
     public GameObject player; // reference to player game object
     public GameObject prefab; // prefab to spawn
     public GameObject prefab2;
+    public GameObject prefab3;
     public GameObject Floor;
     public GameObject Pickup;
     public float spawnDistance = 10f; // distance to spawn prefab in front of player
@@ -55,18 +56,32 @@ public class PrefabSpawner : MonoBehaviour
                     // Reset time since last spawn
                     timeSinceLastSpawn = 0f;
                 }
-                else
+
+                if (RandPreFab == 2)
                 {
                     // Calculate the position to spawn the prefab
-                    Vector3 position = new Vector3(PosX, 1,
-                        player.transform.position.z + spawnDistance);
+                    Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
+
+                    // Spawn the prefab
+                    Instantiate(prefab3, position, Quaternion.identity);
+
+                    // Reset time since last spawn
+                    timeSinceLastSpawn = 0f;   
+                }
+                else if (RandPreFab == 3)
+                {
+                    // Calculate the position to spawn the prefab
+                    Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
 
                     // Spawn the prefab
                     Instantiate(prefab2, position, Quaternion.identity);
 
                     // Reset time since last spawn
-                    timeSinceLastSpawn = 0f;   
+                    timeSinceLastSpawn = 0f;    
                 }
+                
+                    
+                
             }
             // Calculate the position to spawn the prefab
             Vector3 position2 = new Vector3(0, -1,
