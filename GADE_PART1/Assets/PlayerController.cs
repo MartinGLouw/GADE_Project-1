@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             float maxY = 7f; // Set the maximum y value here
             while (timeSincePickup < 10f)
             {
-                float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 5f);
+                float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f);
                 targetY = Mathf.Clamp(targetY, transform.position.y, maxY); // Clamp the targetY value
                 transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
                 timeSincePickup += Time.deltaTime;

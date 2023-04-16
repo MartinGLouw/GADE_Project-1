@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ScoreScript : MonoBehaviour
 {
-    public float score;
+    public static float score;
     public TextMeshProUGUI scoreText;
 
     void OnTriggerEnter(Collider other)
@@ -17,7 +17,7 @@ public class ScoreScript : MonoBehaviour
             if (scoreText != null)
             {
                 scoreText.text = "Score: " + score;
-                scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
+                
             }
         }
 
@@ -28,7 +28,7 @@ public class ScoreScript : MonoBehaviour
             if (scoreText != null)
             {
                 scoreText.text = "Score: " + score;
-                scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
+                
             }
         }
     }
