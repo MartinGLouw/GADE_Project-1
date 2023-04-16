@@ -1,12 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreScript : MonoBehaviour
 {
     public static float score;
     public TextMeshProUGUI scoreText;
+
+    public void Start()
+    {
+        scoreText.text = "Score: " + score;
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -31,5 +38,10 @@ public class ScoreScript : MonoBehaviour
                 
             }
         }
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
     }
 }
