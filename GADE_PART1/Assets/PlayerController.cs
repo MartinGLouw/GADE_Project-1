@@ -75,8 +75,11 @@ public class PlayerController : MonoBehaviour
         {
             float timeSincePickup = 0f;
             Rigidbody rb = GetComponent<Rigidbody>();
+            rb.drag = 1.5f; // Set the linear drag
+            rb.angularDrag = 1.5f; // Set the angular drag
             rb.useGravity = false;
             float maxY = 7f; // Set the maximum y value here
+            
             while (timeSincePickup < 10f)
             {
                 float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f);
