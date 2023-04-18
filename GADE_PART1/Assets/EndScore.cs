@@ -9,8 +9,8 @@ public class EndScore : MonoBehaviour
     public TextMeshProUGUI scoreOut;
    
 
-    // Update is called once per frame
-    void Update()
+    
+    void Update()//this prints the score in a new scene
     {
         float currentScore = ScoreScript.score;
         //scoreOut.GetComponent<TextMeshProUGUI>().text = currentScore.ToString();
