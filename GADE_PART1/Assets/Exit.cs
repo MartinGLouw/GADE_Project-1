@@ -5,7 +5,7 @@ using UnityEngine;
 public class Exit : MonoBehaviour
 {
     
-    public void QuitGame()
+    public void QuitGame()//quits the game
     {
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;

@@ -7,17 +7,17 @@ using UnityEngine;
 
 public class ScoreScript : MonoBehaviour
 {
-    public static float score;
-    public TextMeshProUGUI scoreText;
+    public static float score;//score variable
+    public TextMeshProUGUI scoreText;//score ui object
 
     public void Start()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + score;// displays the text on ui
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)//checks when entering a collider
     {
-        if (other.gameObject.CompareTag("Score"))
+        if (other.gameObject.CompareTag("Score"))//if collider is Score it will add score
         {
             score = score + 0.5f;
             Debug.Log("Score: " + score);
@@ -28,7 +28,7 @@ public class ScoreScript : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Double"))
+        if (other.gameObject.CompareTag("Double"))//if collider is Double it will add another score
         {
             score = score + 0.5f;
             Debug.Log("Score: " + score);
@@ -40,7 +40,7 @@ public class ScoreScript : MonoBehaviour
         }
     }
 
-    public void ResetScore()
+    public void ResetScore()// when restart is clicked the score is set to zero
     {
         score = 0;
     }

@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    private bool isJumping = false;
-    private bool isGrounded = false;
+    public float moveSpeed = 5f;//sets move speed
+    public float jumpForce = 10f;//sets jump force
+    private bool isJumping = false;//checks if jumping
+    private bool isGrounded = false;//checks if grounded
     public float minX = -5f; // minimum x position
     public float maxX = 5f; // maximum x position
-    public int Forward = 0;
-    private float timeSincePickup = 0f;
+    public int Forward = 0;//forward move speed
+    private float timeSincePickup = 0f;//variable for pickup
     public float forwardMoveSpeed = 5f; // new variable for forward movement speed
-    public float customGravity = -19.62f;
+    public float customGravity = -19.62f;//sets custom gravity for player
 
     void FixedUpdate()
     {
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         // Constrain player's movement on x-axis
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y, transform.position.z);
 
-        // Jump
+        // Jump input
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)//checks if player is on the ground
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void OnCollisionExit(Collision collision)
+    void OnCollisionExit(Collision collision)//does a check if player leaves ground
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -77,20 +77,20 @@ public class PlayerController : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.drag = 20f; // Set the linear drag
             rb.angularDrag = 20f; // Set the angular drag
-            rb.useGravity = false;
+            rb.useGravity = false; //disables players gravity
             float maxY = 7f; // Set the maximum y value here
             
             while (timeSincePickup < 10f)
             {
-                float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f);
+                float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f);//moves to a posyion smoothly
                 targetY = Mathf.Clamp(targetY, transform.position.y, maxY); // Clamp the targetY value
-                transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
+                transform.position = new Vector3(transform.position.x, targetY, transform.position.z);// the actual moving of player
                 timeSincePickup += Time.deltaTime;
                 yield return null;
             }
-            rb.useGravity = true;
-            rb.drag = 0f; // Set the linear drag
-            rb.angularDrag = 0f;
+            rb.useGravity = true;//enables players gravity
+            rb.drag = 0f; // Set the linear drag to 0
+            rb.angularDrag = 0f;// Set the angular drag to 0
         }
     }
 }

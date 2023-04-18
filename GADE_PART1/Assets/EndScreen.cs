@@ -8,7 +8,7 @@ public class EndScreen : MonoBehaviour
 {
         [SerializeField] private string nextSceneName;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)//detects when player collides to end game and to go to end game scene
         {
                 if (collision.gameObject.CompareTag("Player"))
                 {
