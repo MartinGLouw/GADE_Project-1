@@ -34,7 +34,7 @@ public class PrefabSpawner : MonoBehaviour
         // Check if it's time to spawn a new prefab
         if (timeSinceLastSpawn >= spawnInterval)
         {
-            if (timeSinceStart < 5f)
+            if (timeSinceStart < 100f)
             {
                 //setting the spawn position out of three possible positions
                 var RandNum = Random.Range(1, 4);
@@ -112,7 +112,7 @@ public class PrefabSpawner : MonoBehaviour
             {
                 PosXPickup = 5;
             }
-            if (timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart < 5f)
+            if (timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart < 100f)
             {
                 // Calculate the position to spawn the pickup prefab
                 Vector3 position = new Vector3(PosXPickup, 1,
@@ -124,6 +124,60 @@ public class PrefabSpawner : MonoBehaviour
                 // Reset time since last pickup spawn
                 timeSinceLastSpawnPickup = 0f; 
                 
+            }
+            if (timeSinceStart > 140f)
+            {
+                //setting the spawn position out of three possible positions
+                var RandNum = Random.Range(1, 4);
+                if (RandNum == 1)
+                {
+                    PosX = -5;
+                }
+                if (RandNum == 2)
+                {
+                    PosX = 0;
+                }
+                if (RandNum == 3)
+                {
+                    PosX = 5;
+                }
+                var RandPreFab = Random.Range(1, 4);
+                {
+                    if (RandPreFab == 1)
+                    {
+                        // Calculate the position to spawn the prefab
+                        Vector3 position = new Vector3(PosX, 0.6f, player.transform.position.z + spawnDistance);
+
+                        // Spawn the prefab
+                        Instantiate(prefab, position, Quaternion.identity);
+
+                        // Reset time since last spawn
+                        timeSinceLastSpawn = 0f;
+                    }
+
+                    if (RandPreFab == 2)
+                    {
+                        // Calculate the position to spawn the prefab
+                        Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
+
+                        // Spawn the prefab
+                        Instantiate(prefab3, position, Quaternion.identity);
+
+                        // Reset time since last spawn
+                        timeSinceLastSpawn = 0f; 
+                    }
+                    else if (RandPreFab == 3)
+                    {
+                        // Calculate the position to spawn the prefab
+                        Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
+
+                        // Spawn the prefab
+                        Instantiate(prefab2, position, Quaternion.identity);
+
+                        // Reset time since last spawn
+                        timeSinceLastSpawn = 0f; 
+                    }
+                }
             }
         }
     }

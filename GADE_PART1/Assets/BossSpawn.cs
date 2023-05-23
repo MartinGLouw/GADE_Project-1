@@ -5,7 +5,7 @@ public class BossSpawn : MonoBehaviour
 {
     public GameObject prefab;
     public Transform player;
-    public float spawnDelay = 5f;
+    public float spawnDelay = 50f;
     public float riseSpeed = 1f;
     public float maxHeight = 5f;
 

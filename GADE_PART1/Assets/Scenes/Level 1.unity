@@ -478,7 +478,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6333293766559466897, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: spawnDelay
-      value: 5
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6333293766559466897, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: scriptToDisable
@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704197, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: moveSpeed
-      value: 6.42
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704197, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: customGravity
@@ -551,6 +551,14 @@ PrefabInstance:
     - target: {fileID: 8157278676381704197, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: forwardMoveSpeed
       value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157278676381704197, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: speedIncreaseRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157278676381704197, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: speedIncreaseDelay
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704198, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: scoreText
@@ -576,9 +584,17 @@ PrefabInstance:
       propertyPath: spawnInterval
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8157278676381704199, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: spawnIntervalForPickup
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704206, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157278676381704206, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8157278677561740525, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: PosY
@@ -1047,7 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e867e42fd44471e4baccfae2d56cf114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8157278675867061944
+--- !u!114 &8157278675867061954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1064,4 +1080,6 @@ MonoBehaviour:
   spawnDistance: 59.8
   spawnInterval: 1
   timeSinceStart: 0
-  spawnDelay: 5
+  spawnDelay: 100
+  spawnIntervalDecreaseRate: 0.005
+  minSpawnInterval: 0.1

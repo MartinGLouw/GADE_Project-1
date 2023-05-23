@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;//sets move speed
-    public float jumpForce = 10f;//sets jump force
-    private bool isJumping = false;//checks if jumping
-    private bool isGrounded = false;//checks if grounded
+    public float moveSpeed = 21.03f; // sets move speed
+    public float jumpForce = 10f; // sets jump force
+    private bool isJumping = false; // checks if jumping
+    private bool isGrounded = false; // checks if grounded
     public float minX = -5f; // minimum x position
     public float maxX = 5f; // maximum x position
-    public int Forward = 0;//forward move speed
-    private float timeSincePickup = 0f;//variable for pickup
+    public int Forward = 0; // forward move speed
+    private float timeSincePickup = 0f; // variable for pickup
     public float forwardMoveSpeed = 5f; // new variable for forward movement speed
-    public float customGravity = -19.62f;//sets custom gravity for player
+    public float customGravity = -19.62f; // sets custom gravity for player
+    public float speedIncreaseRate = 0.1f;
+    public float speedIncreaseDelay = 5f;
+    private float timeSinceStart = 0f;
 
     void FixedUpdate()
     {
@@ -24,13 +27,48 @@ public class PlayerController : MonoBehaviour
         // Add a custom gravity force to the Rigidbody component
         rb.AddForce(new Vector3(0, customGravity, 0));
     }
+
+    private float timeSinceSpeedIncrease = 0f; // variable to keep track of time since speed increase started
+    private bool speedIncreased = false; // variable to keep track of whether the speed has increased
+
+    private bool canSpeedUp = true; // variable to control whether the player can speed up
+
     void Update()
     {
+        timeSinceStart += Time.deltaTime;
+
+        if (timeSinceStart >= speedIncreaseDelay && canSpeedUp)
+        {
+            // Set a maximum value for moveSpeed and forwardMoveSpeed
+            float maxSpeed = 40f;
+            moveSpeed = Mathf.Min(moveSpeed + speedIncreaseRate * Time.deltaTime, maxSpeed);
+            forwardMoveSpeed = Mathf.Min(forwardMoveSpeed + speedIncreaseRate * Time.deltaTime, maxSpeed);
+
+            // Set speedIncreased to true
+            speedIncreased = true;
+        }
+
+        // Increase timeSinceSpeedIncrease if speed has increased
+        if (speedIncreased)
+        {
+            timeSinceSpeedIncrease += Time.deltaTime;
+
+            // Reset speed after 20 seconds have passed
+            if (timeSinceSpeedIncrease >= 40f)
+            {
+                moveSpeed = 25f;
+                forwardMoveSpeed = 5f;
+                timeSinceSpeedIncrease = 0f;
+                speedIncreased = false;
+                canSpeedUp = false; // prevent the player from speeding up again
+            }
+        }
+    
+    
+
+
         // Get horizontal input
         float horizontalInput = Input.GetAxis("Horizontal");
-
-        // Change the moveSpeed value to adjust the horizontal movement speed
-        moveSpeed = 20f;
 
         // Move player left or right
         transform.position += new Vector3(horizontalInput, 0, Forward) * Time.deltaTime * moveSpeed;
@@ -47,21 +85,21 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             isJumping = true;
         }
-    
     }
 
-    void OnCollisionEnter(Collision collision)//checks if player is on the ground
+
+
+
+    void OnCollisionEnter(Collision collision) // checks if player is on the ground
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
             isJumping = false;
         }
-        
-        
     }
 
-    void OnCollisionExit(Collision collision)//does a check if player leaves ground
+    void OnCollisionExit(Collision collision) // does a check if player leaves ground
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -77,20 +115,20 @@ public class PlayerController : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.drag = 20f; // Set the linear drag
             rb.angularDrag = 20f; // Set the angular drag
-            rb.useGravity = false; //disables players gravity
+            rb.useGravity = false; // disables players gravity
             float maxY = 7f; // Set the maximum y value here
-            
+
             while (timeSincePickup < 10f)
             {
-                float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f);//moves to a posyion smoothly
+                float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f); // moves to a position smoothly
                 targetY = Mathf.Clamp(targetY, transform.position.y, maxY); // Clamp the targetY value
-                transform.position = new Vector3(transform.position.x, targetY, transform.position.z);// the actual moving of player
+                transform.position = new Vector3(transform.position.x, targetY, transform.position.z); // the actual moving of player
                 timeSincePickup += Time.deltaTime;
                 yield return null;
             }
-            rb.useGravity = true;//enables players gravity
+            rb.useGravity = true; // enables players gravity
             rb.drag = 0f; // Set the linear drag to 0
-            rb.angularDrag = 0f;// Set the angular drag to 0
+            rb.angularDrag = 0f; // Set the angular drag to 0
         }
     }
 }

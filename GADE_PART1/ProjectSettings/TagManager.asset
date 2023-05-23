@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Score
   - Double
+  - Flying
+  - Boss
   layers:
   - Default
   - TransparentFX
