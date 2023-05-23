@@ -476,6 +476,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6333293766559466897, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: spawnDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333293766559466897, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: scriptToDisable
+      value: Prefab Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333293766559466897, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: scriptsToDisable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333293766559466897, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: scriptsToDisable.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704194, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -705,6 +721,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902006140}
   m_CullTransparentMesh: 1
+--- !u!1 &1942967011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8157278676381704206, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+  m_PrefabInstance: {fileID: 1064660648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2018349235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,9 +1041,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8157278676381704198, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
   m_PrefabInstance: {fileID: 1064660648}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1942967011}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e867e42fd44471e4baccfae2d56cf114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8157278675867061944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942967011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117bbae70b2dc6a40b15cf82a7116662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1942967011}
+  obstaclePrefab: {fileID: 8150242288868475147, guid: fcdecabd2bc0f7d4bb0e57bc6c2e4232, type: 3}
+  spawnDistance: 59.8
+  spawnInterval: 1
+  timeSinceStart: 0
+  spawnDelay: 5
