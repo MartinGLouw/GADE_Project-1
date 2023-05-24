@@ -5,7 +5,7 @@ using UnityEngine;
 public class cameraMovement : MonoBehaviour
 {
     public Transform target;
-    public int PosX = 0, PosY = 2;//limit for camera
+    public int PosX = 0, PosY = 10;//limit for camera
     
     void Update()//locks the camera at a set hight and position and follows player
     {

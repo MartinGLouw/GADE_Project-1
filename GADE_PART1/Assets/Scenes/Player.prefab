@@ -139,6 +139,8 @@ MonoBehaviour:
   Forward: 1
   forwardMoveSpeed: 5
   customGravity: -19.62
+  speedIncreaseRate: 0.1
+  speedIncreaseDelay: 5
 --- !u!114 &8157278676381704198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +171,9 @@ MonoBehaviour:
   prefab2: {fileID: 8150242288868475147, guid: fcdecabd2bc0f7d4bb0e57bc6c2e4232, type: 3}
   prefab3: {fileID: 0}
   Floor: {fileID: 2388119399535093449, guid: be8fd159da6b48441b4433508f1943bc, type: 3}
-  Pickup: {fileID: 0}
+  Pickup1: {fileID: 0}
+  Pickup2: {fileID: 0}
+  Pickup3: {fileID: 0}
   spawnDistance: 35.15
   spawnPositions: []
   spawnInterval: 1.46
@@ -303,4 +307,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 8157278676381704194}
   PosX: 0
-  PosY: 10
+  PosY: 76

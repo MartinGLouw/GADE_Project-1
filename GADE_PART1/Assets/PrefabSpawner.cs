@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,18 +8,23 @@ public class PrefabSpawner : MonoBehaviour
     public GameObject prefab2;
     public GameObject prefab3;
     public GameObject Floor;
-    public GameObject Pickup;
+    public GameObject Pickup1;
+    public GameObject Pickup2;
+    public GameObject Pickup3;
     public float spawnDistance = 10f; // distance to spawn prefab in front of player
     public Vector3[] spawnPositions; // array of possible spawn positions
     public float spawnInterval = 4f; // time interval between spawns in seconds
     public float spawnIntervalForPickup = 18f;
-    private float timeSinceLastSpawn = 0f; // time since last spawn
+    private float timeSinceLastSpawn; // time since last spawn
     private float PosX;
     private float PosXPickup;
-    private float timeSinceLastSpawnPickup = 0f;
-    private float timeSinceStart = 0f;
+    private float timeSinceLastSpawnPickup;
+    private float timeSinceStart;
 
-    void Update()
+    // Add a list to store the positions of other prefabs
+    private readonly List<Vector3> otherPrefabPositions = new();
+
+    private void Update()
     {
         // Update time since start
         timeSinceStart += Time.deltaTime;
@@ -34,31 +38,25 @@ public class PrefabSpawner : MonoBehaviour
         // Check if it's time to spawn a new prefab
         if (timeSinceLastSpawn >= spawnInterval)
         {
-            if (timeSinceStart < 100f)
+            if (timeSinceStart < 90f)
             {
                 //setting the spawn position out of three possible positions
                 var RandNum = Random.Range(1, 4);
-                if (RandNum == 1)
-                {
-                    PosX = -5;
-                }
-                if (RandNum == 2)
-                {
-                    PosX = 0;
-                }
-                if (RandNum == 3)
-                {
-                    PosX = 5;
-                }
+                if (RandNum == 1) PosX = -5;
+                if (RandNum == 2) PosX = 0;
+                if (RandNum == 3) PosX = 5;
                 var RandPreFab = Random.Range(1, 4);
                 {
                     if (RandPreFab == 1)
                     {
                         // Calculate the position to spawn the prefab
-                        Vector3 position = new Vector3(PosX, 0.6f, player.transform.position.z + spawnDistance);
+                        var position = new Vector3(PosX, 0.6f, player.transform.position.z + spawnDistance);
 
                         // Spawn the prefab
                         Instantiate(prefab, position, Quaternion.identity);
+
+                        // Update the list of other prefab positions
+                        otherPrefabPositions.Add(position);
 
                         // Reset time since last spawn
                         timeSinceLastSpawn = 0f;
@@ -67,30 +65,36 @@ public class PrefabSpawner : MonoBehaviour
                     if (RandPreFab == 2)
                     {
                         // Calculate the position to spawn the prefab
-                        Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
+                        var position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
 
                         // Spawn the prefab
                         Instantiate(prefab3, position, Quaternion.identity);
 
+                        // Update the list of other prefab positions
+                        otherPrefabPositions.Add(position);
+
                         // Reset time since last spawn
-                        timeSinceLastSpawn = 0f; 
+                        timeSinceLastSpawn = 0f;
                     }
                     else if (RandPreFab == 3)
                     {
                         // Calculate the position to spawn the prefab
-                        Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
+                        var position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
 
                         // Spawn the prefab
                         Instantiate(prefab2, position, Quaternion.identity);
 
+                        // Update the list of other prefab positions
+                        otherPrefabPositions.Add(position);
+
                         // Reset time since last spawn
-                        timeSinceLastSpawn = 0f; 
+                        timeSinceLastSpawn = 0f;
                     }
                 }
             }
 
             // Calculate the position to spawn the floor prefab
-            Vector3 position2 = new Vector3(0, -1,
+            var position2 = new Vector3(0, -1,
             player.transform.position.z + spawnDistance);
 
             // Spawn the floor prefab
@@ -100,56 +104,58 @@ public class PrefabSpawner : MonoBehaviour
             timeSinceLastSpawn = 0f;
 
             var RandNumPickup = Random.Range(1, 4);
-            if (RandNumPickup == 1)
-            {
-                PosXPickup = -5;
-            }
-            if (RandNumPickup == 2)
-            {
-                PosXPickup = 0;
-            }
-            if (RandNumPickup == 3)
-            {
-                PosXPickup = 5;
-            }
+            if (RandNumPickup == 1) PosXPickup = -5;
+            if (RandNumPickup == 2) PosXPickup = 0;
+            if (RandNumPickup == 3) PosXPickup = 5;
             if (timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart < 100f)
             {
                 // Calculate the position to spawn the pickup prefab
-                Vector3 position = new Vector3(PosXPickup, 1,
+                var position = new Vector3(PosXPickup, 1,
                 player.transform.position.z + spawnDistance);
 
-                // Spawn the pickup prefab
-                Instantiate(Pickup, position, Quaternion.identity);
+                // Check if the pickup spawn position overlaps with another prefab's position
+                var overlap = false;
+                foreach (var otherPosition in otherPrefabPositions)
+                    if (Vector3.Distance(position, otherPosition) < 1f)
+                    {
+                        overlap = true;
+                        break;
+                    }
+
+                
+
+                // Randomly choose which pickup prefab to spawn
+                var pickupToSpawn = Random.Range(1, 4);
+                if (pickupToSpawn == 1)
+                    Instantiate(Pickup1, position, Quaternion.identity);
+                else if (pickupToSpawn == 2)
+                    Instantiate(Pickup2, position, Quaternion.identity);
+                else
+                    Instantiate(Pickup3, position, Quaternion.identity);
 
                 // Reset time since last pickup spawn
-                timeSinceLastSpawnPickup = 0f; 
-                
+                timeSinceLastSpawnPickup = 0f;
             }
+
             if (timeSinceStart > 140f)
             {
                 //setting the spawn position out of three possible positions
                 var RandNum = Random.Range(1, 4);
-                if (RandNum == 1)
-                {
-                    PosX = -5;
-                }
-                if (RandNum == 2)
-                {
-                    PosX = 0;
-                }
-                if (RandNum == 3)
-                {
-                    PosX = 5;
-                }
+                if (RandNum == 1) PosX = -5;
+                if (RandNum == 2) PosX = 0;
+                if (RandNum == 3) PosX = 5;
                 var RandPreFab = Random.Range(1, 4);
                 {
                     if (RandPreFab == 1)
                     {
                         // Calculate the position to spawn the prefab
-                        Vector3 position = new Vector3(PosX, 0.6f, player.transform.position.z + spawnDistance);
+                        var position = new Vector3(PosX, 0.6f, player.transform.position.z + spawnDistance);
 
                         // Spawn the prefab
                         Instantiate(prefab, position, Quaternion.identity);
+
+                        // Update the list of other prefab positions
+                        otherPrefabPositions.Add(position);
 
                         // Reset time since last spawn
                         timeSinceLastSpawn = 0f;
@@ -158,25 +164,74 @@ public class PrefabSpawner : MonoBehaviour
                     if (RandPreFab == 2)
                     {
                         // Calculate the position to spawn the prefab
-                        Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
+                        var position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
 
                         // Spawn the prefab
                         Instantiate(prefab3, position, Quaternion.identity);
 
+                        // Update the list of other prefab positions
+                        otherPrefabPositions.Add(position);
+
                         // Reset time since last spawn
-                        timeSinceLastSpawn = 0f; 
+                        timeSinceLastSpawn = 0f;
                     }
                     else if (RandPreFab == 3)
                     {
                         // Calculate the position to spawn the prefab
-                        Vector3 position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
+                        var position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
 
                         // Spawn the prefab
                         Instantiate(prefab2, position, Quaternion.identity);
 
+                        // Update the list of other prefab positions
+                        otherPrefabPositions.Add(position);
+
                         // Reset time since last spawn
-                        timeSinceLastSpawn = 0f; 
+                        timeSinceLastSpawn = 0f;
                     }
+                }
+                // Calculate the position to spawn the floor prefab
+                var position3 = new Vector3(0, -1,
+                    player.transform.position.z + spawnDistance);
+
+                // Spawn the floor prefab
+                Instantiate(Floor, position3, Quaternion.identity);
+
+                // Reset time since last spawn
+                timeSinceLastSpawn = 0f;
+
+                var RandNumPickup2 = Random.Range(1, 4);
+                if (RandNumPickup2 == 1) PosXPickup = -5;
+                if (RandNumPickup2 == 2) PosXPickup = 0;
+                if (RandNumPickup2 == 3) PosXPickup = 5;
+                if (timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart < 100f)
+                {
+                    // Calculate the position to spawn the pickup prefab
+                    var position = new Vector3(PosXPickup, 1,
+                        player.transform.position.z + spawnDistance);
+
+                    // Check if the pickup spawn position overlaps with another prefab's position
+                    var overlap = false;
+                    foreach (var otherPosition in otherPrefabPositions)
+                        if (Vector3.Distance(position, otherPosition) < 1f)
+                        {
+                            overlap = true;
+                            break;
+                        }
+
+
+
+                    // Randomly choose which pickup prefab to spawn
+                    var pickupToSpawn = Random.Range(1, 4);
+                    if (pickupToSpawn == 1)
+                        Instantiate(Pickup1, position, Quaternion.identity);
+                    else if (pickupToSpawn == 2)
+                        Instantiate(Pickup2, position, Quaternion.identity);
+                    else
+                        Instantiate(Pickup3, position, Quaternion.identity);
+
+                    // Reset time since last pickup spawn
+                    timeSinceLastSpawnPickup = 0f;
                 }
             }
         }
