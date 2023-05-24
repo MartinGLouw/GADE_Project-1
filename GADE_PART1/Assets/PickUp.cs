@@ -8,7 +8,7 @@ public class PickUp : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player" ) || other.gameObject.CompareTag("Strong" ) || other.gameObject.CompareTag("DPPickup"))
+        if (other.gameObject.CompareTag("Player" ) || other.gameObject.CompareTag("Strong" ) || other.gameObject.CompareTag("DPPoints"))
         {
             Destroy(gameObject);
         }
