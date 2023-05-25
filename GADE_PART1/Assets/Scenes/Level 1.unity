@@ -629,6 +629,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8734036181257817750, guid: ddf76761c352b6e42ac77f9c02d7abc7, type: 3}
     - target: {fileID: 8157278676381704199, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: FloorDistance
+      value: 261.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157278676381704199, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: spawnDistance
       value: 146.71
       objectReference: {fileID: 0}
@@ -675,6 +679,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133879813295423105, guid: be8fd159da6b48441b4433508f1943bc, type: 3}
+      propertyPath: timeToDestroy
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2388119399535093449, guid: be8fd159da6b48441b4433508f1943bc, type: 3}
       propertyPath: m_Name
       value: Floor
@@ -685,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4909504137605793325, guid: be8fd159da6b48441b4433508f1943bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21205175
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4909504137605793325, guid: be8fd159da6b48441b4433508f1943bc, type: 3}
       propertyPath: m_LocalPosition.y

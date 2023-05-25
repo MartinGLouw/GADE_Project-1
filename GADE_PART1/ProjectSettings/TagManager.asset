@@ -13,6 +13,7 @@ TagManager:
   - Inv
   - Strong
   - DPPoints
+  - Spawn
   layers:
   - Default
   - TransparentFX

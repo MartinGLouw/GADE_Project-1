@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PrefabSpawner : MonoBehaviour
 {
@@ -20,9 +22,16 @@ public class PrefabSpawner : MonoBehaviour
     private float PosXPickup;
     private float timeSinceLastSpawnPickup;
     private float timeSinceStart;
+    public bool touched;
 
+    public float FloorDistance = 150f;
     // Add a list to store the positions of other prefabs
     private readonly List<Vector3> otherPrefabPositions = new();
+
+    public void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -93,12 +102,7 @@ public class PrefabSpawner : MonoBehaviour
                 }
             }
 
-            // Calculate the position to spawn the floor prefab
-            var position2 = new Vector3(0, -1,
-            player.transform.position.z + spawnDistance);
-
-            // Spawn the floor prefab
-            Instantiate(Floor, position2, Quaternion.identity);
+            
 
             // Reset time since last spawn
             timeSinceLastSpawn = 0f;
@@ -190,13 +194,7 @@ public class PrefabSpawner : MonoBehaviour
                         timeSinceLastSpawn = 0f;
                     }
                 }
-                // Calculate the position to spawn the floor prefab
-                var position3 = new Vector3(0, -1,
-                    player.transform.position.z + spawnDistance);
-
-                // Spawn the floor prefab
-                Instantiate(Floor, position3, Quaternion.identity);
-
+                
                 // Reset time since last spawn
                 timeSinceLastSpawn = 0f;
 
@@ -236,4 +234,29 @@ public class PrefabSpawner : MonoBehaviour
             }
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Spawn")&&!touched)
+        {
+            Debug.Log("Floor Bitch");
+            // Calculate the position to spawn the floor prefab
+            var position = new Vector3(0, -0.6f, player.transform.position.z + FloorDistance);
+
+            // Log the value of position
+            Debug.Log("Spawning floor at position: " + position);
+
+            // Spawn the floor prefab
+            Instantiate(Floor, position, Quaternion.identity);
+            touched = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Spawn")&&touched)
+        {
+            touched=false;
+        }
+    }
+
+
 }
