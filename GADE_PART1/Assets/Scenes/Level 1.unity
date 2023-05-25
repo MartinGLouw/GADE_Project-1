@@ -638,7 +638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704199, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: spawnIntervalForPickup
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704206, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_Name
@@ -646,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704206, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_TagString
-      value: DPPoints
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704207, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_Enabled
