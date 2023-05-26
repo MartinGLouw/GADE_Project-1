@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float speedIncreaseRate = 0.1f;
     public float speedIncreaseDelay = 5f;
     private float timeSinceStart = 0f;
+    public TextMeshProUGUI timerText;
+    public RawImage image; // Assign the RawImage in the Inspector
 
     void FixedUpdate()
     {
@@ -107,28 +111,42 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+
     private IEnumerator OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Flying"))
         {
-            float timeSincePickup = 0f;
+            timeSincePickup = 0f;
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.drag = 20f; // Set the linear drag
             rb.angularDrag = 20f; // Set the angular drag
             rb.useGravity = false; // disables players gravity
             float maxY = 7f; // Set the maximum y value here
 
+            image.enabled = true; // Show the RawImage
+
             while (timeSincePickup < 10f)
             {
                 float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f); // moves to a position smoothly
                 targetY = Mathf.Clamp(targetY, transform.position.y, maxY); // Clamp the targetY value
                 transform.position = new Vector3(transform.position.x, targetY, transform.position.z); // the actual moving of player
-                timeSincePickup += Time.deltaTime;
+                
+                timerText.text = "Time Remaining: " + (10 - timeSincePickup).ToString("F1");
+
+                
+                timeSincePickup += Time.deltaTime / 2;
                 yield return null;
+            
             }
+            
+            timerText.text= "";
+            
             rb.useGravity = true; // enables players gravity
             rb.drag = 0f; // Set the linear drag to 0
             rb.angularDrag = 0f; // Set the angular drag to 0
+
+            image.enabled = false; // Hide the RawImage
         }
     }
 }
