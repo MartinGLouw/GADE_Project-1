@@ -532,6 +532,10 @@ PrefabInstance:
       propertyPath: scriptsToDisable.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8157278676381704192, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704194, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_RootOrder
       value: 2
