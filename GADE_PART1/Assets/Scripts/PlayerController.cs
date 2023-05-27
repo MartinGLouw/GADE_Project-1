@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float speedIncreaseDelay = 5f;
     private float timeSinceStart = 0f;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI TimePassed;
     public RawImage image; // Assign the RawImage in the Inspector
 
     void FixedUpdate()
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         timeSinceStart += Time.deltaTime;
-
+        TimePassed.text = "Time Passed: " + timeSinceStart.ToString("F1");
         if (timeSinceStart >= speedIncreaseDelay && canSpeedUp)
         {
             // Set a maximum value for moveSpeed and forwardMoveSpeed
