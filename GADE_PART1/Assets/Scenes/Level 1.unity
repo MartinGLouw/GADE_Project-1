@@ -1552,6 +1552,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8289387818547579750, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
   m_PrefabInstance: {fileID: 3900189891091155550}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2081551924 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4411475788515099566, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
+  m_PrefabInstance: {fileID: 3900189891091155550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3900189891091155550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1563,6 +1568,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 900114907}
+    - target: {fileID: 3900189891735982103, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2081551924}
     - target: {fileID: 3900189891735982103, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: timerText
       value: 
@@ -1578,7 +1587,7 @@ PrefabInstance:
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: Pickup1
       value: 
-      objectReference: {fileID: 3247333147290966906, guid: d7dca76a84e510041abe8296cc63baf9, type: 3}
+      objectReference: {fileID: 3247333147290966906, guid: 2b1900b58d5e30243874706069ee7dc0, type: 3}
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: Pickup2
       value: 
@@ -1586,7 +1595,7 @@ PrefabInstance:
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: Pickup3
       value: 
-      objectReference: {fileID: 3247333147290966906, guid: d7dca76a84e510041abe8296cc63baf9, type: 3}
+      objectReference: {fileID: 3247333147290966906, guid: 479860e8d71c8eb4fb02edd12d4684e3, type: 3}
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: spawnIntervalForPickup
       value: 5

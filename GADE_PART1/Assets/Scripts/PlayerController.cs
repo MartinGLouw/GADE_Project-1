@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 21.03f; // sets move speed
     public float jumpForce = 10f; // sets jump force
     private bool isJumping = false; // checks if jumping
-    private bool isGrounded = false; // checks if grounded
+     // checks if grounded
     public float minX = -5f; // minimum x position
     public float maxX = 5f; // maximum x position
     public int Forward = 0; // forward move speed
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI TimePassed;
     public RawImage image; // Assign the RawImage in the Inspector
+    public Animator animator;
 
     void FixedUpdate()
     {
@@ -88,8 +89,24 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            
             isJumping = true;
+            animator = GetComponent<Animator>();
+            
+
         }
+
+        if (transform.position.y > 0.15)
+        {
+           animator.SetBool("isJumping", true);
+            
+        }
+
+        if (transform.position.y < 0.15)
+        {
+            animator.SetBool("isJumping", false);
+        }
+        
     }
 
 
@@ -99,8 +116,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            Debug.Log("this is landing bitch https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+            
             isJumping = false;
+            if (isJumping == false)
+            {
+                animator.SetBool("isJumping", false);
+            }
         }
     }
 
@@ -108,7 +130,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false;
+            
         }
     }
 
