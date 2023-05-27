@@ -1572,17 +1572,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 453368776}
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
+      propertyPath: Floor
+      value: 
+      objectReference: {fileID: 2388119399535093449, guid: be8fd159da6b48441b4433508f1943bc, type: 3}
+    - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: Pickup1
       value: 
-      objectReference: {fileID: 3247333147290966906, guid: 479860e8d71c8eb4fb02edd12d4684e3, type: 3}
+      objectReference: {fileID: 3247333147290966906, guid: d7dca76a84e510041abe8296cc63baf9, type: 3}
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: Pickup2
       value: 
-      objectReference: {fileID: 3247333147290966906, guid: 479860e8d71c8eb4fb02edd12d4684e3, type: 3}
+      objectReference: {fileID: 3247333147290966906, guid: d7dca76a84e510041abe8296cc63baf9, type: 3}
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: Pickup3
       value: 
-      objectReference: {fileID: 3247333147290966906, guid: 479860e8d71c8eb4fb02edd12d4684e3, type: 3}
+      objectReference: {fileID: 3247333147290966906, guid: d7dca76a84e510041abe8296cc63baf9, type: 3}
+    - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
+      propertyPath: spawnIntervalForPickup
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3900189891735982105, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: image
       value: 
