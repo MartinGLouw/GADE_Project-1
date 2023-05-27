@@ -623,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   PosX: 0
-  PosY: 10
+  PosY: 15
 --- !u!1 &900114905
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704192, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8157278676381704194, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_RootOrder
@@ -891,6 +891,10 @@ PrefabInstance:
     - target: {fileID: 8157278676381704207, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157278677561740523, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
+      propertyPath: field of view
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 8157278677561740525, guid: 5b2f6bfe8f6911745bac2a13e08d6f39, type: 3}
       propertyPath: PosY
