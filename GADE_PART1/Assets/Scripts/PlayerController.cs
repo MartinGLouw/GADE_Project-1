@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
                 timerText.text = "Time Remaining: " + (10 - timeSincePickup).ToString("F1");
 
                 
-                timeSincePickup += Time.deltaTime / 2;
+                timeSincePickup += Time.deltaTime;
                 yield return null;
             
             }
