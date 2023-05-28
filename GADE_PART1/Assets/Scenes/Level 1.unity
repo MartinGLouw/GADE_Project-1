@@ -1692,6 +1692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explorer
       objectReference: {fileID: 0}
+    - target: {fileID: 8665491801950048732, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8977644710643816143, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: field of view
       value: 63.4

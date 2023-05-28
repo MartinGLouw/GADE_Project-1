@@ -15,17 +15,18 @@ public class BossSpawn : MonoBehaviour
 
         Vector3 spawnPosition = player.position + player.forward;
         GameObject instance = Instantiate(prefab, spawnPosition, Quaternion.identity);
+        Destroy(instance, 50f); // destroy the boss after 30 seconds
 
         while (instance.transform.position.y < maxHeight)
         {
             instance.transform.position += Vector3.up * riseSpeed * Time.deltaTime;
-            instance.transform.position = new Vector3(0, instance.transform.position.y , player.position.z + 70);
+            instance.transform.position = new Vector3(0, instance.transform.position.y, player.position.z + 70);
             yield return null;
         }
 
         while (true)
         {
-            instance.transform.position = new Vector3(0, instance.transform.position.y , player.position.z + 70);
+            instance.transform.position = new Vector3(0, instance.transform.position.y, player.position.z + 70);
             yield return null;
         }
     }

@@ -243,7 +243,6 @@ public class PrefabSpawner : MonoBehaviour
             var position = new Vector3(0, -0.6f, player.transform.position.z + FloorDistance);
 
             // Log the value of position
-            Debug.Log("Spawning floor at position: " + position);
 
             // Spawn the floor prefab
             Instantiate(Floor, position, Quaternion.identity);
