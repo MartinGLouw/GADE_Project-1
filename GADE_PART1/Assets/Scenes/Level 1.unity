@@ -1564,6 +1564,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1511356805521062524, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.108
+      objectReference: {fileID: 0}
     - target: {fileID: 3900189891735982103, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: image
       value: 
@@ -1598,7 +1602,7 @@ PrefabInstance:
       objectReference: {fileID: 3247333147290966906, guid: 479860e8d71c8eb4fb02edd12d4684e3, type: 3}
     - target: {fileID: 3900189891735982104, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: spawnIntervalForPickup
-      value: 5
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3900189891735982105, guid: 3598ec195026ba545ba093eedc6b8022, type: 3}
       propertyPath: image

@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Flying"))
         {
+            animator = GetComponent<Animator>();
             timeSincePickup = 0f;
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.drag = 20f; // Set the linear drag
@@ -151,6 +152,7 @@ public class PlayerController : MonoBehaviour
 
             while (timeSincePickup < 10f)
             {
+                animator.SetBool("isFlying", true);
                 float targetY = Mathf.Lerp(transform.position.y, maxY, timeSincePickup / 7f); // moves to a position smoothly
                 targetY = Mathf.Clamp(targetY, transform.position.y, maxY); // Clamp the targetY value
                 transform.position = new Vector3(transform.position.x, targetY, transform.position.z); // the actual moving of player
@@ -162,6 +164,7 @@ public class PlayerController : MonoBehaviour
                 yield return null;
             
             }
+            animator.SetBool("isFlying", false);
             
             timerText.text= "";
             
