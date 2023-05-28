@@ -154,13 +154,10 @@ public class PrefabSpawner : MonoBehaviour
                     {
                         // Calculate the position to spawn the prefab
                         var position = new Vector3(PosX, 0.6f, player.transform.position.z + spawnDistance);
-
                         // Spawn the prefab
                         Instantiate(prefab, position, Quaternion.identity);
-
                         // Update the list of other prefab positions
                         otherPrefabPositions.Add(position);
-
                         // Reset time since last spawn
                         timeSinceLastSpawn = 0f;
                     }
@@ -169,44 +166,26 @@ public class PrefabSpawner : MonoBehaviour
                     {
                         // Calculate the position to spawn the prefab
                         var position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
-
-
                         // Spawn the prefab
-
                         Instantiate(prefab3, position: position, Quaternion.identity);
-
-
                         // Update the list of other prefab positions
-
                         otherPrefabPositions.Add(position);
-
-
                         // Reset time since last spawn
-
                         timeSinceLastSpawn = 0f;
                     }
-
                     else if (RandPreFab == 3)
-
                     {
                         // Calculate the position to spawn the prefab
                         var position = new Vector3(PosX, 1, player.transform.position.z + spawnDistance);
-
-
                         // Spawn the prefab
                         Instantiate(prefab2, position, Quaternion.identity);
-
-
-// Update the list of other prefab positions
+                        // Update the list of other prefab positions
                         otherPrefabPositions.Add(position);
-
-
-// Reset time since lastspawn
+                        // Reset time since lastspawn
                         timeSinceLastSpawn = 0f;
                     }
                 }
-
-// Reset time since last spawn
+                // Reset time since last spawn
                 timeSinceLastSpawn = 0f;
                 var RandNumPickup2 = Random.Range(1, 4);
 
@@ -225,54 +204,29 @@ public class PrefabSpawner : MonoBehaviour
                 if (timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart < 100f)
 
                 {
-// Calculate the position to spawn the pickup prefab
-
-
+                    // Calculate the position to spawn the pickup prefab
                     var position = new Vector3(PosXPickup, 1, player.transform.position.z + spawnDistance);
-
-
-// Check if the pickup spawn position overlaps with another prefab's position
-
-
+                    // Check if the pickup spawn position overlaps with another prefab's position
                     var overlap = false;
-
                     foreach (var otherPosition in otherPrefabPositions)
-
                         if (Vector3.Distance(position, otherPosition) < 1f)
-
                         {
                             overlap = true;
 
                             break;
                         }
 
-
                     if (!overlap)
-
                     {
-// Randomly choose which pickup prefab to spawn
-
+                        // Randomly choose which pickup prefab to spawn
                         var pickupToSpawn = Random.Range(1, 4);
-
                         if (pickupToSpawn == 1)
-
                             Instantiate(Pickup1, position, Quaternion.identity);
-
-
                         else if (pickupToSpawn == 2)
-
                             Instantiate(Pickup2, position, Quaternion.identity);
-
-
                         else
-
-
                             Instantiate(Pickup3, position, Quaternion.identity);
-
-
-// Reset time since last pickup spawn
-
-
+                        // Reset time since last pickup spawn
                         timeSinceLastSpawnPickup = 0f;
                     }
                 }
@@ -284,7 +238,7 @@ public class PrefabSpawner : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spawn") && !touched)
         {
-            Debug.Log("Floor Bitch");
+            
             // Calculate the position to spawn the floor prefab
             var position = new Vector3(0, -0.6f, player.transform.position.z + FloorDistance);
 

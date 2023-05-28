@@ -116,7 +116,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("this is landing bitch https://www.youtube.com/watch?v=dQw4w9WgXcQ");
             
             isJumping = false;
             if (isJumping == false)
