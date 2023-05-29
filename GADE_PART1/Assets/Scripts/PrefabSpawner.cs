@@ -110,7 +110,7 @@ public class PrefabSpawner : MonoBehaviour
             if (RandNumPickup == 1) PosXPickup = -5;
             if (RandNumPickup == 2) PosXPickup = 0;
             if (RandNumPickup == 3) PosXPickup = 5;
-            if (timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart < 100f)
+            if (timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart < 100f || timeSinceLastSpawnPickup >= spawnIntervalForPickup && timeSinceStart > 140f )
             {
                 // Calculate the position to spawn the pickup prefab
                 var position = new Vector3(PosXPickup, 1,

@@ -160,6 +160,7 @@ public class PlayerController : MonoBehaviour
 
                 
                 timeSincePickup += Time.deltaTime;
+                
                 yield return null;
             
             }
